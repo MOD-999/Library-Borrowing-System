@@ -4,6 +4,11 @@ from django.db import models
 
 # Create your models here.
 
+class statusChoices(models.TextChoices):
+    P = "Pending"
+    A = "Approved"
+    R = "Rejected"
+
 class BorrowRequest(models.Model):
     book = models.ForeignKey(
         "catalog.Book",
@@ -21,7 +26,7 @@ class BorrowRequest(models.Model):
     
     status =models.CharField(
         max_length=20,
-        choices=[("P","Pending"),("A","Approved"),("R","Rejected")],
+        choices=statusChoices,
         default="P"
     )
 

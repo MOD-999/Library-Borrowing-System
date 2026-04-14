@@ -13,7 +13,7 @@ class IsStaffForUpdate(BasePermission):
 
 class BorrowListCreateAPI (generics.ListCreateAPIView):
     serializer_class = BorrowRequestSerializer
-    permission_classes = [permissions.IsAuthenticated()]
+    permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         if self.request.user.is_staff:
@@ -25,7 +25,7 @@ class BorrowListCreateAPI (generics.ListCreateAPIView):
     
 class BorrowDetailAPI(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = BorrowRequestSerializer
-    permission_classes = [permissions.IsAuthenticated(), IsStaffForUpdate]
+    permission_classes = [permissions.IsAuthenticated, IsStaffForUpdate]
 
     def get_queryset(self):
         if self.request.user.is_staff:

@@ -16,8 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
-    path('catalog/',include("catalog.urls")), #http://127.0.0.1:8000/catalog/
+    path('api/auth/token/', obtain_auth_token, name='api-token-auth'),
+    path('api/catalog/', include("catalog.urls")), #http://127.0.0.1:8000/api/catalog/
+    path('api/loans/', include("loans.urls")), #http://127.0.0.1:8000/api/loans/
     path('admin/', admin.site.urls),          #http://127.0.0.1:8000/admin/
 ]

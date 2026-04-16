@@ -1,0 +1,23 @@
+{
+  "name": "library-borrowing-system",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "all": "run-both.bat",
+    "frontend": "cd frontend && npm run dev",
+    "backend": "cd Library && python manage.py runserver"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MOD-999/Library-Borrowing-System.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/MOD-999/Library-Borrowing-System/issues"
+  },
+  "homepage": "https://github.com/MOD-999/Library-Borrowing-System#readme"
+}

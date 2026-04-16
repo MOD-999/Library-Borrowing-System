@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from django.conf import settings
+from django.conf.urls.static import static
 from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
@@ -23,4 +25,4 @@ urlpatterns = [
     path('api/catalog/', include("catalog.urls")), #http://127.0.0.1:8000/api/catalog/
     path('api/loans/', include("loans.urls")), #http://127.0.0.1:8000/api/loans/
     path('admin/', admin.site.urls),          #http://127.0.0.1:8000/admin/
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

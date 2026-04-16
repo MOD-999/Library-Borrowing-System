@@ -3,14 +3,6 @@ import api from "../../utils/api";
 import BooksContainer from "../../components/BooksContainer";
 import "./style.css";
 
-// context api --
-// custom hooks --
-// react-query
-// best practices
-// useRef
-// useRef vs useState
-// component design pattern using context api
-//
 function Books() {
     const [books, setBooks] = useState([]);
     const [query, setQuery] = useState("");

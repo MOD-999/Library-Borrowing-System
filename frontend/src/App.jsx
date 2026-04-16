@@ -17,10 +17,7 @@ function App() {
                         <Route path="/books/:id" element={<BookDetail />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/register" element={<Register />} />
-                        <Route
-                            path="*"
-                            element={<Navigate to="/books" replace />}
-                        />
+                        <Route path="*" element={<div>Page Not Found</div>} />
                     </Routes>
                 </main>
             </div>

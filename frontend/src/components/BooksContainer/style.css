@@ -1,0 +1,12 @@
+.books-grid {
+    margin-top: 1rem;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+}
+
+@media (max-width: 720px) {
+    .books-grid {
+        grid-template-columns: 1fr;
+    }
+}

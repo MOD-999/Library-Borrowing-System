@@ -1,0 +1,47 @@
+.page {
+    text-align: left;
+}
+
+.page-top {
+    margin-bottom: 1.25rem;
+}
+
+.page-title {
+    margin: 0;
+    color: #0f172a;
+    font-size: clamp(1.8rem, 3.6vw, 2.8rem);
+    line-height: 1.1;
+}
+
+.page-subtitle {
+    margin: 0.6rem 0 0;
+    color: #334155;
+    max-width: 60ch;
+    line-height: 1.6;
+}
+
+.page-state {
+    margin: 2rem auto;
+    width: fit-content;
+    padding: 0.8rem 1.1rem;
+    border-radius: 0.65rem;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    color: #0f172a;
+    font-weight: 600;
+}
+
+.page-state-error {
+    border-color: #fecaca;
+    color: #991b1b;
+    background: #fef2f2;
+}
+
+.search-bar{
+    margin-top: 0.75rem;
+    padding: 0.6rem 0.8rem;
+    width: 100%;
+    max-width: 420px;
+    border-radius: 10px;
+    border: 1px solid #cbd5e1;
+}

@@ -4,12 +4,13 @@ from django.db import models
 
 # Create your models here.
 
-class statusChoices(models.TextChoices):
-    P = "Pending"
-    A = "Approved"
-    R = "Rejected"
-
 class BorrowRequest(models.Model):
+    STATUS_CHOICES = [
+        ("Pending", "Pending"),
+        ("Approved", "Approved"),
+        ("Rejected", "Rejected"),
+    ]
+
     book = models.ForeignKey(
         "catalog.Book",
         on_delete=models.CASCADE,
@@ -24,10 +25,10 @@ class BorrowRequest(models.Model):
 
     request_date = models.DateTimeField(auto_now_add=True)
     
-    status =models.CharField(
+    status = models.CharField(
         max_length=20,
-        choices=statusChoices,
-        default="P"
+        choices=STATUS_CHOICES,
+        default="Pending"
     )
 
     def __str__(self):

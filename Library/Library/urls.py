@@ -24,5 +24,6 @@ urlpatterns = [
     path('api/auth/token/', obtain_auth_token, name='api-token-auth'),
     path('api/catalog/', include("catalog.urls")), #http://127.0.0.1:8000/api/catalog/
     path('api/loans/', include("loans.urls")), #http://127.0.0.1:8000/api/loans/
-    path('admin/', admin.site.urls),          #http://127.0.0.1:8000/admin/
+    path('api/user/', include("user.urls")),   #http://127.0.0.1:8000/api/user/
+    path('admin/', admin.site.urls),           #http://127.0.0.1:8000/admin/
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

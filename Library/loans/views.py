@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework import generics,permissions
-from .models import BorrowRequest, statusChoices
+from .models import BorrowRequest
 from .serializer import BorrowRequestSerializer
 from rest_framework.permissions import BasePermission
 # Create your views here.
@@ -34,7 +34,25 @@ class BorrowDetailAPI(generics.RetrieveUpdateDestroyAPIView):
 
     def perform_update(self, serializer):
         instance = serializer.save()
-        if instance.status == statusChoices.A:            
-            book = instance.book
+        book = instance.book
+        
+        # If Approved, mark book as unavailable and reject other pending requests
+        if instance.status == "Approved":            
             book.is_available = False
             book.save()
+            # Reject all other pending requests for this book
+            BorrowRequest.objects.filter(
+                book=book,
+                status="Pending"
+            ).exclude(id=instance.id).update(status="Rejected")
+        # If Rejected, make book available again
+        elif instance.status == "Rejected":
+            # Check if there are any other approved requests for this book
+            approved_count = BorrowRequest.objects.filter(
+                book=book,
+                status="Approved"
+            ).count()
+            # Only make available if no approved requests exist
+            if approved_count == 0:
+                book.is_available = True
+                book.save()
